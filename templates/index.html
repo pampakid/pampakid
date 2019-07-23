@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="wrapper wrapper_padding clearfix">
+      <div class="col-1 about home_page_content">
+        <h2>ABOUT</h2>
+        <hr>
+        <p>I'm a decision scientist with interests in science, art and technology.</p>
+        <p>Welcome to the place where I try to connect the dots about the stuff I find interesting and put my ideas into words.</p>
+        <p>I write about bridging business and product strategy using research design, experimentation and behavioural insights to help companies make better decisions and develop better products.</p>
+      </div>
+      <div class="col-2 home_page_content">
+        <h2>THINGS I WROTE</h2>
+        <hr>
+        {% for obj in latest %}
+        <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h3>
+        <p class="date">{{ obj.timestamp }}</p>
+        <!-- <h3><a href="#">Behavioural Product Development</a></h3> -->
+        <!-- <p class="date">Friday June 28th</p> -->
+        <!-- <h3><a href="#">USA &amp; Asia on Growth</a></h3> -->
+        <!-- <p class="date">Friday June 28th</p> -->
+        {% endfor %}
+        <h5><a href="/blog">See more...</a></h5>
+      </div>
+      <div class="col-3 home_page_content">
+        <h2>THINGS I BUILT</h2>
+        <hr>
+        <h3><a href="#">amor : An R Package to Assess Model Robustness</a></h3>
+        <p class="proj_desc">Set of functions to help mitigate biases and achieve more roubst results in the computation of treatment effects.</p>
+        <h3><a href="#">Latin Unicorns</a></h3>
+        <p class="proj_desc">An up-to-date picture of Latin America's top tech companies.</p>
+      </div>
+    </div>
+{% endblock content %}

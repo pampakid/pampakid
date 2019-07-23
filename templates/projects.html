@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div id="post_show_content" class="skinny_wrapper wrapper_padding">
+		<header>
+			<!-- <p class="date">{{ post.timestamp }}</p> -->
+			<h1>Stuff I Built</h1>
+			<hr>
+		</header>
+
+    <div id="post_wrapper" class="skinny_wrapper">
+      <div class="post">
+        <h2><a href="#">amor : An R Package to Assess Model Robustness</a></h2>
+        <p class="date">Set of functions to help mitigate biases and achieve more roubst results in the computation of treatment effects.</p>
+        <hr>
+      </div>
+
+      <div class="post">
+        <h2><a href="#">Latin Unicorns</a></h2>
+        <p class="date">An up-to-date picture of Latin America's top tech companies.</p>
+      </div>
+    </div>
+
+		<hr>
+
+		<div id="end_button">
+			<a href="/" class="button">Back to Home</a>
+		</div>
+	</div>
+{% endblock content %}

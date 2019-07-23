@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1 id="page_title">Things I Wrote</h1>
+    <div id="post_wrapper" class="skinny_wrapper">
+      {% for post in queryset %}
+      <div class="post">
+        <p class="date">{{ post.timestamp }}</p>
+        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Pagination -->
+    <div class="pagination">
+      <!-- {% if queryset.has_previous == False %}
+      <span class="previous_page disabled">Previous</span>
+      {% endif %} -->
+      {% if queryset.has_previous %}
+      <a class="next_page" href="?{{ page_request_var }}={{ queryset.previous_page_number }}">Previous</a>
+      <a rel="next" href="?{{ page_request_var }}={{ queryset.previous_page_number }}">{{ queryset.previous_page_number }}</a>
+      {% endif %}
+      <em class="current">{{ queryset.number }}</em>
+      {% if queryset.has_next %}
+      <a rel="next" href="?{{ page_request_var }}={{ queryset.next_page_number }}">{{ queryset.next_page_number }}</a>
+      <a class="next_page" href="?{{ page_request_var }}={{ queryset.next_page_number }}">Next</a>
+      {% endif %}
+      <!-- {% if queryset.has_next == False %}
+      <span class="previous_page disabled">Next</span>
+      {% endif %} -->
+    </div>
+{% endblock content %}
