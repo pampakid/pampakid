@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+
+  <div id="thank_you" class="skinny_wrapper wrapper_padding">
+    <header >
+      <img src="/static/img/moon.png" alt="">
+    </header>
+    <div class="login_content">
+      <p>{{ form.username.label_tag }}</p>
+      <td>{{ form.username }}</td>
+      <br>
+      <p>{{ form.password.label_tag }}</p>
+      <td>{{ form.password }}</td>
+      <br>
+      <input type="submit" class="button" value="Log in">
+      <input type="hidden" name="next" value="{{ next }}" />
+      {# Assumes you setup the password_reset view in your URLconf #}
+      <div class="reset_pass">
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<!-- <div id="thank_you" class="skinny_wrapper wrapper_padding">
+
+
+  <div class="login_content">
+    <label>username</label><br>
+    <input type="text">
+
+    <br>
+
+    <label>password</label><br>
+    <input type="password">
+
+    <br>
+
+    <input type="submit" class="button" value="Log in">
+  </div>
+</div> -->
+{% endblock content %}

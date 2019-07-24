@@ -2,24 +2,14 @@
 {% load static %}
 
 {% block content %}
-    <h1 id="page_title">Hey there</h1>
-
-  	<div class="skinny_wrapper wrapper_padding">
-  		<label>Name</label><br>
-  		<input type="text">
-
-  		<br>
-
-  		<label>Email</label><br>
-  		<input type="text">
-
-  		<br>
-
-  		<label>Message</label><br>
-  		<textarea></textarea>
-
-  		<br>
-
-  		<input type="submit" value="Send Message" class="button">
-  	</div>
+<div class="skinny_wrapper wrapper_padding">
+  <h1 id="page_title">Interested in working on a project?</h1>
+  <div class="content">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+  		<input type="submit" class="button" value="Send Message">
+    </form>
+  </div>
+</div>
 {% endblock content %}

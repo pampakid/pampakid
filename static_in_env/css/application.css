@@ -535,6 +535,44 @@ input[type="submit"], .button {
 #post_show_content .manifesto {
   text-align: center; }
 
+#thank_you {
+  text-align: center; }
+  #thank_you header h1 {
+    margin: 1em; }
+  #thank_you .success_content p {
+    padding: 0 0 1em 0;
+    margin: 0;
+    font-weight: 400;
+    color: #9a9da4;
+    font-size: 1em; }
+  #thank_you .login_content {
+    margin: 3em; }
+    #thank_you .login_content label {
+      font-size: 1em;
+      color: #9a9da4;
+      margin: 0; }
+    #thank_you .login_content input {
+      max-width: 50%; }
+    #thank_you .login_content p {
+      padding: 0 0 1em 0;
+      margin: 0;
+      font-weight: 400;
+      color: #9a9da4;
+      font-size: 1em; }
+  #thank_you .reset_pass {
+    margin: 2em; }
+    #thank_you .reset_pass a {
+      font-size: .9em;
+      color: #665EFF;
+      text-decoration: none; }
+      #thank_you .reset_pass a:hover {
+        text-decoration: underline; }
+  #thank_you hr {
+    margin: 3em auto; }
+  #thank_you img {
+    width: 30%;
+    margin: 1em; }
+
 #share_box {
   text-align: center; }
   #share_box p {

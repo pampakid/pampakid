@@ -1,7 +1,9 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.core.mail import EmailMessage
+from django.template.loader import get_template
 
-from .forms import PostForm
+from .forms import PostForm, ContactForm
 from .models import Post, Author
 
 def get_author(user):
@@ -23,11 +25,47 @@ def index(request):
 def manifesto(request):
     return render(request, 'manifesto.html')
 
+def login(request):
+    return render(request, 'login.html')
+
+def success(request):
+    return render(request, 'success.html')
+
 def projects(request):
     return render(request, 'projects.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    form = ContactForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            message = request.POST.get('message')
+
+            # Email the profile with the contact information
+            template = get_template('contact_template.txt')
+
+            context = {
+                'name':name,
+                'email':email,
+                'message':message
+            }
+            content = template.render(context)
+
+            email = EmailMessage(
+                "New contact form submission",
+                content,
+                "pampakid.com" + "",
+                ["kid@pampakid.com"],
+                headers = {"Reply-To":email}
+            )
+            email.send()
+            return render(request, 'success.html')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'contact.html', context)
 
 def post_list(request):
     post_list = Post.objects.all()

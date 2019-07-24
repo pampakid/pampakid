@@ -60,6 +60,61 @@
   }
 }
 
+#thank_you {
+  text-align: center;
+	header {
+		h1 {
+			margin:1em;
+		}
+	}
+  .success_content {
+    p {
+      padding: 0 0 1em 0;
+      margin: 0;
+      font-weight: 400;
+      color: $light;
+      font-size: 1em;
+    }
+  }
+
+  .login_content {
+    margin: 3em;
+    label {
+      font-size: 1em;
+      color: $light;
+      margin: 0;
+    }
+    input {
+      max-width: 50%;
+    }
+    p {
+      padding: 0 0 1em 0;
+      margin: 0;
+      font-weight: 400;
+      color: $light;
+      font-size: 1em;
+    }
+  }
+  .reset_pass {
+    margin: 2em;
+    a {
+      font-size: .9em;
+      color: $highlight;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+	hr {
+		margin: 3em auto;
+	}
+  img {
+    width: 30%;
+    margin: 1em;
+  }
+}
+
 #share_box {
 	text-align: center;
 	p {

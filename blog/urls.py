@@ -6,8 +6,10 @@ from django.urls import path, include
 from posts.views import (
     index,
     manifesto,
+    login,
     projects,
     contact,
+    success,
     post_list,
     post_create,
     post_detail,
@@ -20,7 +22,8 @@ urlpatterns = [
     path('', index),
     path('manifesto/', manifesto),
     path('projects/', projects),
-    path('contact/', contact),
+    path('contact/', contact, name='contact'),
+    path('success/', success),
     path('blog/', post_list, name='post-list'),
     path('create/', post_create, name='post-create'),
     path('post/<id>/', post_detail, name='post-detail'),
@@ -28,6 +31,8 @@ urlpatterns = [
     path('post/<id>/delete', post_delete, name='post-delete'),
 
     path('tinymce/', include('tinymce.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/login/', login, name='login'),
 ]
 
 if settings.DEBUG:
