@@ -1,8 +1,6 @@
-Contact Name:
-{{ name }}
+New message from: {{ name }}
 
-Email:
-{{ email }}
+Reply-To: {{ email }}
 
 Content:
 {{ message|safe|striptags }}

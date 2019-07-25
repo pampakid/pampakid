@@ -1,6 +1,8 @@
+from django.conf import settings
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.template.loader import get_template
 
 from .forms import PostForm, ContactForm
@@ -42,6 +44,13 @@ def contact(request):
             email = request.POST.get('email')
             message = request.POST.get('message')
 
+            # Email ourselves the submitted contact message
+            subject = "New contact message for Pampa Kid"
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_email = [settings.DEFAULT_TO_EMAIL]
+
+            # contact_message = "{0}, from {1} with email {2}".format(message, name, email)
+
             # Email the profile with the contact information
             template = get_template('contact_template.txt')
 
@@ -52,14 +61,15 @@ def contact(request):
             }
             content = template.render(context)
 
-            email = EmailMessage(
-                "New contact form submission",
-                content,
-                "pampakid.com" + "",
-                ["kid@pampakid.com"],
-                headers = {"Reply-To":email}
-            )
-            email.send()
+            send_mail(subject, content, from_email, to_email, fail_silently=True)
+            # email = EmailMessage(
+            #     "New contact form submission",
+            #     content,
+            #     "pampakid.com" + "",
+            #     ["kid@pampakid.com"],
+            #     headers = {"Reply-To":email}
+            # )
+            # email.send_mail()
             return render(request, 'success.html')
 
     context = {

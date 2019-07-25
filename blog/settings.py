@@ -152,11 +152,15 @@ TINYMCE_DEFAULT_CONFIG = {
 LOGIN_REDIRECT_URL = '/'
 
 # Email settings for contact page
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-DEFAULT_FROM_EMAIL = 'testing@example.com'
+SENDGRID_API_KEY = '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'
+
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
-SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
-EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY #8cuIUkccm467
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" #sendgrid_backend.SendgridBackend
+DEFAULT_FROM_EMAIL = 'contact@pampakid.com'
+DEFAULT_TO_EMAIL = 'kid@pampakid.com'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'New Contact Email for Pampa Kid'
