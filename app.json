@@ -1,0 +1,22 @@
+{
+  "name": "Pampa Kid - Decision Scientist",
+  "description": "Personal blog page.",
+  "image": "heroku/python",
+  "repository": "https://github.com/pampakid/pampakid",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "+vcpuekgxzp0p3jjbpp(7$epf%z*@wt&2^r$4o97*i636@3*1*",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py --settings=blog.settings.test",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}

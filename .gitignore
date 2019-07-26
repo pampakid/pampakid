@@ -1,3 +1,7 @@
 "sendgrid.env"
 db.sqlite3
-/tutorial/settings/local
+/blog/settings/local
+*.pyc
+staticfiles
+.env
+blog/*
